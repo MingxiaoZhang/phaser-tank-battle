@@ -36,12 +36,12 @@ class Play {
         this.createWorld();
         this.createHp();
 
-        this.playerText = this.add.text(650, 70, 'Player 1');
-
+        // Initialize time control
         this.timer = 0;
         this.lastFire = 0;
         this.lastFire2 = 0;
 
+        // Create particles
         let particles = this.add.particles('pixel');
         this.player.emitter = particles.createEmitter({
             quantity: 10,
