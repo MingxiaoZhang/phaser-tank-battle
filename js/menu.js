@@ -5,7 +5,7 @@ class Menu {
         bg.setScale(2);
         let menuText = this.add.text(400, 170, 'TANK BATTLE', {font: '100px', fontWeight: '900'});
         menuText.setOrigin(0.5,0.5);
-        let playerText = this.add.text(400, 320, 'Press \'space\' to start', {font: '40px'});
+        let playerText = this.add.text(400, 320, 'Press \'SPACE\' to start', {font: '40px'});
         playerText.setOrigin(0.5,0.5);
         this.upKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     }

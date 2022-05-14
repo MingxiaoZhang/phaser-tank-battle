@@ -22,6 +22,6 @@ window.onload = function() {
     game.scene.add('load', Load);
     game.scene.add('menu', Menu);
     game.scene.add('play', Play);
-    game.scene.add('winner', Play);
+    game.scene.add('winner', Winner);
     game.scene.start('load');
 };
