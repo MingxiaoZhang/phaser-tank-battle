@@ -64,18 +64,18 @@ class Play {
         this.movePlayer(this.arrow, this.player);
         this.movePlayer(this.wasd, this.player2);
 
-        // Set collision
+        // Collision control
         this.physics.collide(this.player, this.walls);
         this.physics.collide(this.player2, this.walls);
         this.physics.collide(this.player2, this.player);
 
+        // Fire control
         if (this.fireKey1.isDown) {
             if (this.time - this.lastFire > this.player.fireFreq) {
                 this.fireBullet(this.player);
                 this.lastFire = this.timer;
             }
         }
-
         if (this.fireKey2.isDown) {
             if (this.timer - this.lastFire2 > this.player2.fireFreq) {
                 this.fireBullet(this.player2);
@@ -83,12 +83,14 @@ class Play {
             }
         }
 
+        // Take coin
         if (this.physics.overlap(this.player, this.coin)) {
             this.takeCoin(this.player);
         } else if (this.physics.overlap(this.player2, this.coin)) {
             this.takeCoin(this.player2);
         }
 
+        // Powerplay reset
         if (this.timer - this.takeTime > 400 && this.powerPlayer !== 0) {
             let num = Phaser.Math.RND.between(0, this.spawningPoints.length - 1);
             this.coin = this.physics.add.sprite(this.spawningPoints[num][0], this.spawningPoints[num][1], 'coin');
@@ -96,8 +98,10 @@ class Play {
             this.powerPlayer = 0;
         }
 
+        // Timer
         this.tick();
 
+        // Death scene
         if (this.player.hp === 0) {
             this.time.addEvent({
                 delay: 1000,
@@ -140,6 +144,7 @@ class Play {
         this.walls.setCollision(1);
     }
 
+    // Set hearts for each player
     createHp() {
         this.playerText = this.add.text(650, 70, 'Player 1');
         this.player.hearts = new Array(5);
